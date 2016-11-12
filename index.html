@@ -5,59 +5,165 @@
     <script type="text/javascript" src="./js/bootstrap.min.js"></script>
   </head>
   <body>
-    <label>标题</label>
+    <h2>标题</h2>
     <div class="input-group" id="title-data">
-      <input type="text" class="form-control"/>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">title</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>解析的标题</span>
     </div>
     <div id="ctr-data">
-      <label>控制数据</label>
-      <table class="table">
-        <tr>
-          <th>NDIM</th>
-          <th>ITER</th>
-          <th>M</th>
-          <th>MTYPE</th>
-          <th>IEDIS</th>
-        </tr>
-        <tr>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-        </tr>
-      </table>
-      <table class="table">
-        <tr>
-          <th>INITIAL</th>
-          <th>INBEAM</th>
-          <th>INJOINT</th>
-          <th>MFD</th>
-          <th>ISOL</th>
-        </tr>
-        <tr>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-        </tr>
-      </table>
-      <table class="table">
-        <tr>
-          <th>GRAVITY</th>
-          <th>GMW</th>
-          <th>PAA</th>
-          <th>NSKIP</th>
-        </tr>
-        <tr>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-          <td><input type="text" class="form-control"/></td>
-        </tr>
-      </table>
+      <h2>控制数据</h2>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">NDIM</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>计算维数
+            1：二维
+            2：三维
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">ITER</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>是否进行迭代计算
+                                     ０  ：进行迭代急速
+                                     ≥１ ：不进行迭代计算（推荐）
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">M</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>动力计算中使用的固有特征值数（一般为2）</span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">MTYPE</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>是否进行有效应力计算。1:有效应力，0:全应力</span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">IEDIS</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>是否使用等位移边界条件。０：无，1：有</span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">INITIAL</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>地层单元的初始应力场的设定方法
+            0：由各土层厚度及单位体积重量来计算
+            1：从外部数据文件读取各单元的初始应力状态（必须对应所有单元），外部数据文件名为initial.dat。
+            2：均一应力场（全部单元同一应力状态）</span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">INBEAM</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>使用AFD模型梁单元的时候，是否指定其初始应力及初始应变（不指定的时候初始值为0）
+            0：不指定
+            1：指定
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">INJOINT</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>是否指定节理单元的初始应力
+            0：不指定
+            1：指定
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">MFD</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>是否进行有限变形计算(Finite Deformation)
+            0: 不进行
+            1: 使用Jaumann stress rate tensor
+　　　　　　2: 使用Green-Naghdi stress rate tensor
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">ISOL</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>指定求解器（设为1）
+            0:SKYLINE法(Compaq Visual Fortran编译)
+            1:迭代法(INTEL Fortran编译)
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">GRAVITY</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>重力加速度值(0.0的时候自动设为9.8m/s2)</span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">GMW</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>孔隙水的单位体积重量
+      (0.0的时候自动设为9.8kN/m3)
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">PAA</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>参考应力(建议为1个大气压)
+                    (0.0的时候自动设为98.0kN/m2)
+                     使用量纲kN/m2的时候：PAA=98.0
+            　　　   kgf/cm2的时候：PAA=1.0
+            　　   　tf/m2的时候：PAA=10.0
+      </span>
+      <div class="input-group">
+        <span class="input-group-addon" id="basic-addon3">NSKIP</span>
+        <input type="text" class="form-control"/>
+      </div>
+      <span>计算结果输出到out.bin的跳跃步数
+      （不填时默认为1）
+      </span>
     </div>
+    <div id="material">
+      <h2>材料参数</h2>
+      <div id="ma">
+        <h4>弹性材料（MT=1）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr>
+            <th>L</th>
+            <th>MT</th>
+            <th>MM</th>
+            <th>Ｅ</th>
+            <th>ν</th>
+            <th>ρ</th>
+            <th>ν</th>
+            <th>k0</th>
+            <th>n</th>
+            <th>Dummy</th>
+            <th>h1</th>
+            <th>h2</th>
+            <th>k</th>
+            <th>Kf</th>
+            <th>e0</th>
+            <th>Dummy</th>
+          </tr>
+        </table>
+      </div>
+      <div id="mb">
+        <h4>弹性材料（MT=1）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr>
+            <th>L</th>
+            <th>MT</th>
+            <th>MM</th>
+            <th>Ｅ</th>
+            <th>ν</th>
+            <th>ρ</th>
+            <th>ν</th>
+            <th>k0</th>
+            <th>n</th>
+            <th>Dummy</th>
+            <th>h1</th>
+            <th>h2</th>
+            <th>k</th>
+            <th>Kf</th>
+            <th>e0</th>
+          </tr>
+        </table>
+      </div>
     <div>
       <button type="button" class="btn btn-default" id="generate">生成</button>
     </div>
@@ -68,6 +174,140 @@
     </div>
   </body>
   <script type="text/javascript">
+    $("#generate").click(function() {
+      var result = "";
+      result += gen_title() + "\n";
+      result += gen_ctr() + "\n";
+      result += get_material();
+      $("#result")[0].value = result;
+    });
+
+    $(".add").click(function() {
+      var target = $(this).parent().find("table");
+      var attr_count = $(target).find("th").length;
+      var html = "<tr>\n"
+      for(var i = 0;i < attr_count;i++){
+        html += "<td><input type=\"text\" class=\"form-control\"/></td>\n";
+      }
+      html += "</tr>\n";
+      target.append(html);
+    });
+
+    function gen_title(){
+      var title = $("#title-data").find("input")[0].value
+      return "*title\n" + title
+    }
+
+    function gen_ctr(){
+      var text = "";
+      var all_td = $("#ctr-data").find("input");
+      var all_td = to_array(all_td);
+
+      text += gen_attr_comment(ctr_table_1);
+      text += "\n";
+      for(var n in ctr_table_1){
+        var data = all_td.shift();
+        text += line_data(ctr_table_1[n].line, data.value);
+      }
+      text += "\n";
+      text += gen_attr_comment(ctr_table_2);
+      text += "\n";
+      for(var n in ctr_table_2){
+        var data = all_td.shift();
+        text += line_data(ctr_table_2[n].line, data.value);
+      }
+      text += "\n";
+      text += gen_attr_comment(ctr_table_3);
+      text += "\n";
+      for(var n in ctr_table_3){
+        var data = all_td.shift();
+        text += line_data(ctr_table_3[n].line, data.value);
+      }
+
+      return text;
+    }
+
+    function get_material(){
+      var result = "";
+      var count = 1;
+      for(var i =0;i < count;i++){
+        var target_id = String.fromCharCode(97 + i);
+        var target_table = $("#m"+target_id).find('table')[0];
+        var rows = $(target_table).find("tr");
+
+        var datas = "";
+        var format = eval("m" + target_id);
+        var data_idx = 0;
+        for(var n in format){
+          result += gen_attr_comment(format[n]) + "\n";
+        }
+        for(var m=1;m < rows.length;m++){
+          var inputs = $(rows[m]).find('input');
+          var idx = 0;
+          for(var n in format){
+            for(var i in format[n]){
+              var target_td = inputs[idx];
+              datas += line_data(format[n][i].line, target_td.value);
+              idx += 1;
+            }
+            datas += "\n"
+          }
+        }
+        result += datas;
+        return result;
+      }
+    }
+
+    function gen_attr_comment(attrs){
+      var res = "* ";
+      var attr_arr = [];
+      var line_arr = [];
+      for(var n in attrs){
+        attr_arr.push(attrs[n].attr);
+        line_arr.push(table_line(attrs[n].line, n == 0));
+      }
+      res += attr_arr.join(", ") + "\n";
+      res += line_arr.join("");
+      return res;
+    }
+
+    function table_line(line_num){
+      first = arguments[1] || false;
+      str = first ? '*' : ''
+
+      while(str.length < line_num){
+        if((str.length + 1) == line_num){
+          str += '+';
+        }else{
+          str += '-';
+        }
+      }
+
+      return str;
+    }
+
+    function line_data(line_num, data){
+      str = String(data);
+      if(str.length > line_num){
+        return str.substring(0, line_num);
+      }else{
+        var append_num = line_num - str.length;
+        for(var i = 0;i < append_num;i++){
+          str = ' ' + str
+        }
+        return str
+      }
+    }
+
+    function to_array(object){
+      var arr = [];
+      for(var i in object){
+        arr.push(object[i]);
+      }
+      return arr
+    }
+
+    // data format
     var title_table = [
       {
         "attr": "title",
@@ -136,95 +376,67 @@
         "line": 5
       }
     ]
-
-    $("#generate").click(function() {
-      var result = "";
-      result += gen_title() + "\n";
-      result += gen_ctr();
-      $("#result")[0].value = result;
-    })
-
-    function gen_title(){
-      var title = $("#title-data").find("input")[0].value
-      return "*title\n" + title
-    }
-
-    function gen_ctr(){
-      var text = "";
-      var all_td = $("#ctr-data").find("td").find("input");
-      var all_td = to_array(all_td);
-
-      text += gen_attr_comment(ctr_table_1);
-      text += "\n";
-      for(var n in ctr_table_1){
-        var data = all_td.shift();
-        text += line_data(ctr_table_1[n].line, data.value);
-      }
-      text += "\n";
-      text += gen_attr_comment(ctr_table_2);
-      text += "\n";
-      for(var n in ctr_table_2){
-        var data = all_td.shift();
-        text += line_data(ctr_table_2[n].line, data.value);
-      }
-      text += "\n";
-      text += gen_attr_comment(ctr_table_3);
-      text += "\n";
-      for(var n in ctr_table_3){
-        var data = all_td.shift();
-        text += line_data(ctr_table_3[n].line, data.value);
-      }
-
-      return text;
-    }
-
-    function gen_attr_comment(attrs){
-      var res = "* ";
-      var attr_arr = [];
-      var line_arr = [];
-      for(var n in attrs){
-        attr_arr.push(attrs[n].attr);
-        line_arr.push(table_line(attrs[n].line, n == 0));
-      }
-      res += attr_arr.join(", ") + "\n";
-      res += line_arr.join("");
-      return res;
-    }
-
-    function table_line(line_num){
-      first = arguments[1] || false;
-      str = first ? '*' : ''
-
-      while(str.length < line_num){
-        if((str.length + 1)%5 == 0){
-          str += '+';
-        }else{
-          str += '-';
+    var ma = [
+      [
+        {
+          "attr": "L",
+          "line": 1
+        },
+        {
+          "attr": "MT",
+          "line": 4
+        },
+        {
+          "attr": "MM",
+          "line": 5
+        },
+        {
+          "attr": "E",
+          "line": 10
+        },
+        {
+          "attr": "ν",
+          "line": 10
+        },
+        {
+          "attr": "ρ",
+          "line": 10
+        },
+        {
+          "attr": "k0",
+          "line": 10
+        },
+        {
+          "attr": "n",
+          "line": 10
         }
-      }
-
-      return str;
-    }
-
-    function line_data(line_num, data){
-      str = String(data);
-      if(str.length > line_num){
-        return str.substring(0, line_num);
-      }else{
-        var append_num = line_num - str.length;
-        for(var i = 0;i < append_num;i++){
-          str = ' ' + str
+      ],
+      [
+        {
+          "attr": "h1",
+          "line": 10
+        },
+        {
+          "attr": "h2",
+          "line": 10
+        },
+        {
+          "attr": "k",
+          "line": 10
+        },
+        {
+          "attr": "Kf",
+          "line": 10
+        },
+        {
+          "attr": "e0",
+          "line": 10
+        },
+        {
+          "attr": "Dummy",
+          "line": 10
         }
-        return str
-      }
-    }
-
-    function to_array(object){
-      var arr = [];
-      for(var i in object){
-        arr.push(object[i]);
-      }
-      return arr
-    }
+      ]
+    ]
   </script>
 </html>
