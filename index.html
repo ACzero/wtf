@@ -1,0 +1,230 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <label>标题</label>
+    <div class="input-group" id="title-data">
+      <input type="text" class="form-control"/>
+    </div>
+    <div id="ctr-data">
+      <label>控制数据</label>
+      <table class="table">
+        <tr>
+          <th>NDIM</th>
+          <th>ITER</th>
+          <th>M</th>
+          <th>MTYPE</th>
+          <th>IEDIS</th>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+        </tr>
+      </table>
+      <table class="table">
+        <tr>
+          <th>INITIAL</th>
+          <th>INBEAM</th>
+          <th>INJOINT</th>
+          <th>MFD</th>
+          <th>ISOL</th>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+        </tr>
+      </table>
+      <table class="table">
+        <tr>
+          <th>GRAVITY</th>
+          <th>GMW</th>
+          <th>PAA</th>
+          <th>NSKIP</th>
+        </tr>
+        <tr>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+          <td><input type="text" class="form-control"/></td>
+        </tr>
+      </table>
+    </div>
+    <div>
+      <button type="button" class="btn btn-default" id="generate">生成</button>
+    </div>
+    <div>
+      <textarea id="result" style="height:400;width:800">
+
+      </textarea>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var title_table = [
+      {
+        "attr": "title",
+        "line": 50
+      }
+    ]
+    var ctr_table_1 = [
+      {
+        "attr": "NDIM",
+        "line": 5
+      },
+      {
+        "attr": "ITER",
+        "line": 5
+      },
+      {
+        "attr": "M",
+        "line": 5
+      },
+      {
+        "attr": "MTYPE",
+        "line": 5
+      },
+      {
+        "attr": "IEDIS",
+        "line": 5
+      },
+      {
+        "attr": "INITIAL",
+        "line": 5
+      },
+      {
+        "attr": "INBEAM",
+        "line": 5
+      },
+      {
+        "attr": "INJOINT",
+        "line": 5
+      },
+      {
+        "attr": "MFD",
+        "line": 5
+      },
+      {
+        "attr": "ISOL",
+        "line": 5
+      }
+    ]
+    var ctr_table_2 = [
+      {
+        "attr": "GRAVITY",
+        "line": 10
+      },
+      {
+        "attr": "GMW",
+        "line": 10
+      },
+      {
+        "attr": "PAA",
+        "line": 10
+      }
+    ]
+    var ctr_table_3 = [
+      {
+        "attr": "NSKIP",
+        "line": 5
+      }
+    ]
+
+    $("#generate").click(function() {
+      var result = "";
+      result += gen_title() + "\n";
+      result += gen_ctr();
+      $("#result")[0].value = result;
+    })
+
+    function gen_title(){
+      var title = $("#title-data").find("input")[0].value
+      return "*title\n" + title
+    }
+
+    function gen_ctr(){
+      var text = "";
+      var all_td = $("#ctr-data").find("td").find("input");
+      var all_td = to_array(all_td);
+
+      text += gen_attr_comment(ctr_table_1);
+      text += "\n";
+      for(var n in ctr_table_1){
+        var data = all_td.shift();
+        text += line_data(ctr_table_1[n].line, data.value);
+      }
+      text += "\n";
+      text += gen_attr_comment(ctr_table_2);
+      text += "\n";
+      for(var n in ctr_table_2){
+        var data = all_td.shift();
+        text += line_data(ctr_table_2[n].line, data.value);
+      }
+      text += "\n";
+      text += gen_attr_comment(ctr_table_3);
+      text += "\n";
+      for(var n in ctr_table_3){
+        var data = all_td.shift();
+        text += line_data(ctr_table_3[n].line, data.value);
+      }
+
+      return text;
+    }
+
+    function gen_attr_comment(attrs){
+      var res = "* ";
+      var attr_arr = [];
+      var line_arr = [];
+      for(var n in attrs){
+        attr_arr.push(attrs[n].attr);
+        line_arr.push(table_line(attrs[n].line, n == 0));
+      }
+      res += attr_arr.join(", ") + "\n";
+      res += line_arr.join("");
+      return res;
+    }
+
+    function table_line(line_num){
+      first = arguments[1] || false;
+      str = first ? '*' : ''
+
+      while(str.length < line_num){
+        if((str.length + 1)%5 == 0){
+          str += '+';
+        }else{
+          str += '-';
+        }
+      }
+
+      return str;
+    }
+
+    function line_data(line_num, data){
+      str = String(data);
+      if(str.length > line_num){
+        return str.substring(0, line_num);
+      }else{
+        var append_num = line_num - str.length;
+        for(var i = 0;i < append_num;i++){
+          str = ' ' + str
+        }
+        return str
+      }
+    }
+
+    function to_array(object){
+      var arr = [];
+      for(var i in object){
+        arr.push(object[i]);
+      }
+      return arr
+    }
+  </script>
+</html>
