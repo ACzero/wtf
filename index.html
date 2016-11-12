@@ -143,7 +143,7 @@
         </table>
       </div>
       <div id="mb">
-        <h4>弹性材料（MT=1）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹塑性材料（Drucker-Prager: MT=0; Modified Drucker-Prager: MT=3）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr>
             <th>L</th>
@@ -154,13 +154,14 @@
             <th>ρ</th>
             <th>ν</th>
             <th>k0</th>
-            <th>n</th>
-            <th>Dummy</th>
+            <th>C</th>
+            <th>φ</th>
             <th>h1</th>
             <th>h2</th>
             <th>k</th>
             <th>Kf</th>
             <th>e0</th>
+            <th>Dummy</th>
           </tr>
         </table>
       </div>
@@ -229,11 +230,14 @@
 
     function get_material(){
       var result = "";
-      var count = 1;
+      var count = 2;
       for(var i =0;i < count;i++){
         var target_id = String.fromCharCode(97 + i);
         var target_table = $("#m"+target_id).find('table')[0];
         var rows = $(target_table).find("tr");
+        if(rows.length < 2){
+          continue;
+        }
 
         var datas = "";
         var format = eval("m" + target_id);
@@ -408,6 +412,76 @@
         },
         {
           "attr": "n",
+          "line": 10
+        },
+        {
+          "attr": "Dummy",
+          "line": 10
+        }
+      ],
+      [
+        {
+          "attr": "h1",
+          "line": 10
+        },
+        {
+          "attr": "h2",
+          "line": 10
+        },
+        {
+          "attr": "k",
+          "line": 10
+        },
+        {
+          "attr": "Kf",
+          "line": 10
+        },
+        {
+          "attr": "e0",
+          "line": 10
+        },
+        {
+          "attr": "Dummy",
+          "line": 10
+        }
+      ]
+    ]
+    var mb = [
+      [
+        {
+          "attr": "L",
+          "line": 1
+        },
+        {
+          "attr": "MT",
+          "line": 4
+        },
+        {
+          "attr": "MM",
+          "line": 5
+        },
+        {
+          "attr": "E",
+          "line": 10
+        },
+        {
+          "attr": "ν",
+          "line": 10
+        },
+        {
+          "attr": "ρ",
+          "line": 10
+        },
+        {
+          "attr": "k0",
+          "line": 10
+        },
+        {
+          "attr": "C",
+          "line": 10
+        },
+        {
+          "attr": "φ",
           "line": 10
         }
       ],
