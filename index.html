@@ -249,11 +249,28 @@
   <script type="text/javascript">
     function init(){
       // gen material
+      var ma_datas = []
       for(var _c=0;_c < $("#material").find('table').length;_c++){
         var target_id = String.fromCharCode(97 + _c);
-        var target_table = $("#m"+target_id).find('table').find('tr');
-        var all_attr = eval("m" + target_id);
+        var tbid = "#m" + target_id;
+        var format_name = "m" + target_id;
 
+        ma_datas.push({
+          "tbid": tbid,
+          "format_name": format_name
+        });
+      }
+      gen_table_attrs(ma_datas);
+
+      // // gen node
+      // for(var _c=2;_c < 4;_c++){
+      // }
+    }
+
+    function gen_table_attrs(table_datas){
+      for(var n in table_datas){
+        var target_table = $(table_datas[n].tbid).find('table').find('tr');
+        var all_attr = eval(table_datas[n].format_name);
         var insert_tr = ""
         for(var n in all_attr){
           for(var m in all_attr[n]){
@@ -261,25 +278,8 @@
             insert_tr += "<th>" + _attr + "</th>\n"
           }
         }
-        // insert_tr += "</tr>";
         target_table.append(insert_tr);
       }
-
-      // gen node
-      // for(var _c=2;_c < 4;_c++){
-      //   var target_table = $("#node" + _c).find('table').find('tr');
-      //   var all_attr = eval("node" + _c);
-      //
-      //   var insert_tr = ""
-      //   for(var n in all_attr){
-      //     for(var m in all_attr[n]){
-      //       var _attr = all_attr[n][m].attr;
-      //       insert_tr += "<th>" + _attr + "</th>\n"
-      //     }
-      //   }
-      //   // insert_tr += "</tr>";
-      //   target_table.append(insert_tr);
-      // }
     }
 
     $("#generate").click(function() {
