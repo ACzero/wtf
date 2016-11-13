@@ -223,6 +223,20 @@
           <tr></tr>
         </table>
       </div>
+    </div>
+    <div id="node-data">
+      <h2>节点数据</h2>
+      <div id="node2">
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+      <div id="node3">
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+    </div>
     <div>
       <button type="button" class="btn btn-default" id="generate">生成</button>
     </div>
@@ -234,6 +248,7 @@
   </body>
   <script type="text/javascript">
     function init(){
+      // gen material
       for(var _c=0;_c < $("#material").find('table').length;_c++){
         var target_id = String.fromCharCode(97 + _c);
         var target_table = $("#m"+target_id).find('table').find('tr');
@@ -249,6 +264,22 @@
         // insert_tr += "</tr>";
         target_table.append(insert_tr);
       }
+
+      // gen node
+      // for(var _c=2;_c < 4;_c++){
+      //   var target_table = $("#node" + _c).find('table').find('tr');
+      //   var all_attr = eval("node" + _c);
+      //
+      //   var insert_tr = ""
+      //   for(var n in all_attr){
+      //     for(var m in all_attr[n]){
+      //       var _attr = all_attr[n][m].attr;
+      //       insert_tr += "<th>" + _attr + "</th>\n"
+      //     }
+      //   }
+      //   // insert_tr += "</tr>";
+      //   target_table.append(insert_tr);
+      // }
     }
 
     $("#generate").click(function() {
@@ -305,18 +336,28 @@
     }
 
     function get_material(){
-      var result = "";
-      var count = 4;
+      var count = 17;
+      var tmp_datas = [];
       for(var data_count=0;data_count < count;data_count++){
-        var target_id = String.fromCharCode(97 + data_count);
-        var target_table = $("#m"+target_id).find('table')[0];
+        tmp_datas.push({
+          "tbid": "#m" + String.fromCharCode(97 + data_count),
+          "format_name": "m" + String.fromCharCode(97 + data_count)
+        });
+      }
+      return get_table_gen(tmp_datas);
+    }
+
+    function get_table_gen(table_datas){
+      var result = "";
+      for(var n in table_datas){
+        var target_table = $(table_datas[n].tbid).find('table')[0];
         var rows = $(target_table).find("tr");
         if(rows.length < 2){
           continue;
         }
 
         var datas = "";
-        var format = eval("m" + target_id);
+        var format = eval(table_datas[n].format_name);
         var data_idx = 0;
         for(var n in format){
           result += gen_attr_comment(format[n]) + "\n";
