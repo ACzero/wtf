@@ -145,67 +145,80 @@
         </table>
       </div>
       <div id="me">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹塑性材料(Cyclic mobility model 2006)（MT=20）
+(TS-Cyclic mobility model 2010)（MT=21）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mf">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹塑性材料(Original tij-clay model)（MT=4）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mg">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹塑性材料(Original tij-sand model)（MT=13）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mh">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹塑性材料(tij subloading clay model)（MT=12）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mi">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹塑性材料(tij subloading model 2004)（MT=16）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mj">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>Column材料（MT=6）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mk">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹性梁材料（MT=2）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="ml">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>梁，trilinear材料（MT=7，8）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mm">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>梁，AFD模型（MT=70，80）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mn">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>板壳材料（4节点平面板单元MT=18；8节点厚板单元MT=19）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
       </div>
       <div id="mo">
-        <h4>弹塑性材料(Cam-clay subloading model)（MT=17）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <h4>弹簧材料（MT=10：线弹性弹簧； MT=11：弹塑性弹簧）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+      <div id="mp">
+        <h4>弹簧材料（MT=14：R-O型）<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+      <div id="mq">
+        <h4>节理材料（MT=5）<h4/><button type="button" class="btn btn-default add">添加</button>
         <table class="table">
           <tr></tr>
         </table>
@@ -1206,9 +1219,9 @@
           "desc": "e0，初始孔隙比"
         },
         {
-          "attr": "B",
+          "attr": "β",
           "line": 10,
-          "desc": "B, parameter for stress-dilatancy relation"
+          "desc": "β, parameter for stress-dilatancy relation"
         }
       ],
       [
@@ -1663,7 +1676,199 @@
         }
       ]
     ]
-
+    var mo = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "线弹性弹簧=10；弹塑性弹簧=11"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "k0",
+          "line": 10,
+          "desc": "k0，弹簧的初始刚度"
+        },
+        {
+          "attr": "β",
+          "line": 10,
+          "desc": "β，第2刚性比 E2/E"
+        },
+        {
+          "attr": "γ",
+          "line": 10,
+          "desc": "γ，第3刚性比E3/E"
+        },
+        {
+          "attr": "Pc",
+          "line": 10,
+          "desc": "Pc，trilinear模型的第1个屈服点的荷载"
+        },
+        {
+          "attr": "Py",
+          "line": 10,
+          "desc": "Py，trilinear模型的第2个屈服点的荷载"
+        },
+        {
+          "attr": "Pu",
+          "line": 10,
+          "desc": "Pu，trilinear模型的第3个屈服点的荷载"
+        }
+      ],
+      [
+        {
+          "attr": "ｈ1",
+          "line": 10,
+          "desc": "ｈ1，衰减系数"
+        },
+        {
+          "attr": "ｈ2",
+          "line": 10,
+          "desc": "ｈ2，衰减系数"
+        }
+      ]
+    ]
+    var mp = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "R-O型弹簧=14"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "k0",
+          "line": 10,
+          "desc": "k0，弹簧的初始刚度"
+        },
+        {
+          "attr": "r",
+          "line": 10,
+          "desc": "parameter r"
+        },
+        {
+          "attr": "α",
+          "line": 10,
+          "desc": "parameter α"
+        },
+        {
+          "attr": "τf",
+          "line": 10,
+          "desc": "parameter τf"
+        },
+        {
+          "attr": "Dummy",
+          "line": 10,
+          "desc": "Dummy"
+        },
+        {
+          "attr": "Dummy",
+          "line": 10,
+          "desc": "Dummy"
+        }
+      ],
+      [
+        {
+          "attr": "ｈ1",
+          "line": 10,
+          "desc": "ｈ1，衰减系数"
+        },
+        {
+          "attr": "ｈ2",
+          "line": 10,
+          "desc": "ｈ2，衰减系数"
+        }
+      ]
+    ]
+    var mq = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "5"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "ks",
+          "line": 10,
+          "desc": "ks，切向刚度"
+        },
+        {
+          "attr": "kn",
+          "line": 10,
+          "desc": "kn，法向刚度"
+        },
+        {
+          "attr": "C",
+          "line": 10,
+          "desc": "C，凝聚力"
+        },
+        {
+          "attr": "φ",
+          "line": 10,
+          "desc": "φ，内摩擦角（度）"
+        },
+        {
+          "attr": "σt",
+          "line": 10,
+          "desc": "σt，拉伸强度"
+        },
+        {
+          "attr": "Vmc",
+          "line": 10,
+          "desc": "Vmc，应力为零时允许张开量（符合定义  +：闭，-：开）"
+        }
+      ],
+      [
+        {
+          "attr": "dummy",
+          "line": 10,
+          "desc": "dummy（σs0，せん断方向初期応力（初期応力外部入力時はブランク））"
+        },
+        {
+          "attr": "dummy",
+          "line": 10,
+          "desc": "dummy（σn0，垂直方向初期応力（初期応力外部入力時はブランク））"
+        },
+        {
+          "attr": "ｈ1",
+          "line": 10,
+          "desc": "ｈ1，衰减系数"
+        },
+        {
+          "attr": "ｈ2",
+          "line": 10,
+          "desc": "ｈ2，衰减系数"
+        }
+      ]
+    ]
     init();
   </script>
 </html>
