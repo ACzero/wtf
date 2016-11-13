@@ -226,15 +226,20 @@
     </div>
     <div id="node-data">
       <h2>节点数据</h2>
-      <div id="node2">
-        <table class="table">
-          <tr></tr>
-        </table>
-      </div>
-      <div id="node3">
-        <table class="table">
-          <tr></tr>
-        </table>
+      <div id="anode">
+        <h4>实体单元<h4/>
+        <div id="anode2">
+          <h4>二维单元<h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
+        <div id="anode3">
+          <h4>三维单元<h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
       </div>
     </div>
     <div>
@@ -252,7 +257,7 @@
       var ma_datas = []
       for(var _c=0;_c < $("#material").find('table').length;_c++){
         var target_id = String.fromCharCode(97 + _c);
-        var tbid = "#m" + target_id;
+        var tbid = "m" + target_id;
         var format_name = "m" + target_id;
 
         ma_datas.push({
@@ -262,14 +267,23 @@
       }
       gen_table_attrs(ma_datas);
 
-      // // gen node
-      // for(var _c=2;_c < 4;_c++){
-      // }
+      // gen node
+      var node_data = [];
+      for(var _c=2;_c < 4;_c++){
+        var tbid = "anode" + _c;
+        var format_name = "anode" + _c;
+        node_data.push({
+          "tbid": tbid,
+          "format_name": format_name
+        });
+      }
+      console.log(node_data)
+      gen_table_attrs(node_data);
     }
 
     function gen_table_attrs(table_datas){
       for(var n in table_datas){
-        var target_table = $(table_datas[n].tbid).find('table').find('tr');
+        var target_table = $("#" + table_datas[n].tbid).find('table').find('tr');
         var all_attr = eval(table_datas[n].format_name);
         var insert_tr = ""
         for(var n in all_attr){
@@ -286,7 +300,8 @@
       var result = "";
       result += gen_title() + "\n";
       result += gen_ctr() + "\n";
-      result += get_material();
+      result += get_material() + "\n";
+      result += get_node();
       $("#result")[0].value = result;
     });
 
@@ -342,6 +357,17 @@
         tmp_datas.push({
           "tbid": "#m" + String.fromCharCode(97 + data_count),
           "format_name": "m" + String.fromCharCode(97 + data_count)
+        });
+      }
+      return get_table_gen(tmp_datas);
+    }
+
+    function get_node(){
+      var tmp_datas = [];
+      for(var _c=2;_c < 4;_c++){
+        tmp_datas.push({
+          "tbid": "#anode" + _c,
+          "format_name": "anode" + _c
         });
       }
       return get_table_gen(tmp_datas);
@@ -1910,6 +1936,115 @@
         }
       ]
     ]
+    var anode2 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "N3",
+          "line": 5,
+          "desc": "单元的第3个节点号码"
+        },
+        {
+          "attr": "N4",
+          "line": 5,
+          "desc": "单元的第4个节点号码"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "NLIQ",
+          "line": 5,
+          "desc": "单元的干湿（有效应力分析时）1：干，0：湿"
+        }
+      ]
+    ]
+    var anode3 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "N3",
+          "line": 5,
+          "desc": "单元的第3个节点号码"
+        },
+        {
+          "attr": "N4",
+          "line": 5,
+          "desc": "单元的第4个节点号码"
+        },
+        {
+          "attr": "N5",
+          "line": 5,
+          "desc": "单元的第5个节点号码"
+        },
+        {
+          "attr": "N6",
+          "line": 5,
+          "desc": "单元的第6个节点号码"
+        },
+        {
+          "attr": "N7",
+          "line": 5,
+          "desc": "单元的第7个节点号码"
+        },
+        {
+          "attr": "N8",
+          "line": 5,
+          "desc": "单元的第8个节点号码"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "NLIQ",
+          "line": 5,
+          "desc": "单元的干湿（有效应力分析时）1：干，0：湿"
+        }
+      ]
+    ]
+
     init();
   </script>
 </html>
