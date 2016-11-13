@@ -1206,9 +1206,9 @@
           "desc": "e0，初始孔隙比"
         },
         {
-          "attr": "Xr",
+          "attr": "B",
           "line": 10,
-          "desc": "Xr, parameter"
+          "desc": "B, parameter for stress-dilatancy relation"
         }
       ],
       [
@@ -1245,14 +1245,421 @@
       ],
       [
         {
-          "attr": "a",
+          "attr": "a(ANN)",
           "line": 10,
-          "desc": "a, parameter"
+          "desc": "a(ANN), parameter"
         },
         {
-          "attr": "Kr",
+          "attr": "OCR",
           "line": 10,
-          "desc": "Kr, parameter"
+          "desc": "OCR"
+        }
+      ]
+    ]
+    var mj = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "6"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "Ｅ",
+          "line": 10,
+          "desc": "Ｅ’，Young's modulus"
+        },
+        {
+          "attr": "ν",
+          "line": 10,
+          "desc": "ν，Poisson Ratio"
+        },
+        {
+          "attr": "ρ",
+          "line": 10,
+          "desc": "ρ，密度"
+        },
+        {
+          "attr": "k0",
+          "line": 10,
+          "desc": "k0，静止土压力系数"
+        },
+        {
+          "attr": "h1",
+          "line": 10,
+          "desc": "h1，衰减系数"
+        },
+        {
+          "attr": "h2",
+          "line": 10,
+          "desc": "h2，衰减系数"
+        }
+      ]
+    ]
+    var mk = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "2"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "Ｅ",
+          "line": 10,
+          "desc": "Ｅ，弹性模量"
+        },
+        {
+          "attr": "Ａ",
+          "line": 10,
+          "desc": "Ａ，横截面面积"
+        },
+        {
+          "attr": "Ｉx",
+          "line": 10,
+          "desc": "Ｉx，绕X轴的惯性矩"
+        },
+        {
+          "attr": "Ｉy",
+          "line": 10,
+          "desc": "Ｉy，绕Y轴的惯性矩（二维计算时不需）"
+        },
+        {
+          "attr": "υ",
+          "line": 10,
+          "desc": "υ，泊松比"
+        },
+        {
+          "attr": "Ｊ",
+          "line": 10,
+          "desc": "Ｊ，极惯性矩（二维计算时不需）"
+        }
+      ],
+      [
+        {
+          "attr": "ｈ1",
+          "line": 10,
+          "desc": "ｈ1，衰减系数"
+        },
+        {
+          "attr": "ｈ2",
+          "line": 10,
+          "desc": "ｈ2，衰减系数"
+        },
+        {
+          "attr": "ρ",
+          "line": 10,
+          "desc": "ρ，密度"
+        }
+      ]
+    ]
+    var ml = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "7（有Column材料），8（无Column材料）"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "Ｅ",
+          "line": 10,
+          "desc": "Ｅ，初始弹性模量"
+        },
+        {
+          "attr": "Ａ",
+          "line": 10,
+          "desc": "Ａ，横截面面积"
+        },
+        {
+          "attr": "Ｉx",
+          "line": 10,
+          "desc": "Ｉx，绕X轴的惯性矩"
+        },
+        {
+          "attr": "Ｉy",
+          "line": 10,
+          "desc": "Ｉy，绕Y轴的惯性矩（二维计算时不需）"
+        },
+        {
+          "attr": "υ",
+          "line": 10,
+          "desc": "υ，泊松比"
+        },
+        {
+          "attr": "Ｊ",
+          "line": 10,
+          "desc": "Ｊ，极惯性矩（二维计算时不需）"
+        }
+      ],
+      [
+        {
+          "attr": "a1",
+          "line": 10,
+          "desc": "a1，第一屈服点之后相比于初始弹模的折扣比例"
+        },
+        {
+          "attr": "a2",
+          "line": 10,
+          "desc": "a2，第二屈服点之后相比于初始弹模的折扣比例"
+        },
+        {
+          "attr": "Ｍc",
+          "line": 10,
+          "desc": "Ｍc，第一屈服弯矩（输入正值）"
+        },
+        {
+          "attr": "Ｍy",
+          "line": 10,
+          "desc": "Ｍy，第二屈服弯矩（输入正值）"
+        },
+        {
+          "attr": "Ｍu",
+          "line": 10,
+          "desc": "Ｍu，极限弯矩（输入正值）"
+        },
+        {
+          "attr": "ρ",
+          "line": 10,
+          "desc": "ρ，密度"
+        }
+      ],
+      [
+        {
+          "attr": "ｈ1",
+          "line": 10,
+          "desc": "ｈ1，衰减系数"
+        },
+        {
+          "attr": "ｈ2",
+          "line": 10,
+          "desc": "ｈ2，衰减系数"
+        }
+      ]
+    ]
+    var mm = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "70（有Column材料），80（无Column材料）"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "Ｅc",
+          "line": 10,
+          "desc": "Ｅc，混凝土的初始弹性模型"
+        },
+        {
+          "attr": "υc",
+          "line": 10,
+          "desc": "υc，混凝土的泊松比"
+        },
+        {
+          "attr": "AA(3)",
+          "line": 10,
+          "desc": "圆形截面的外径D，或者是矩形截面的宽B (EYM(MM,22) 不为零的时候)"
+        },
+        {
+          "attr": "ｆc",
+          "line": 10,
+          "desc": "ｆc，混凝土的压缩强度"
+        },
+        {
+          "attr": "ｆt",
+          "line": 10,
+          "desc": "ｆt，混凝土的拉伸强度"
+        },
+        {
+          "attr": "λ",
+          "line": 10,
+          "desc": "λ，混凝土模型parameter"
+        }
+      ],
+      [
+        {
+          "attr": "μ",
+          "line": 10,
+          "desc": "μ，混凝土模型parameter"
+        },
+        {
+          "attr": "τ",
+          "line": 10,
+          "desc": "τ，混凝土模型parameter"
+        },
+        {
+          "attr": "νc",
+          "line": 10,
+          "desc": "νc，混凝土模型parameter"
+        },
+        {
+          "attr": "βc",
+          "line": 10,
+          "desc": "βc，混凝土的Degrading parameter"
+        },
+        {
+          "attr": "Ｅs",
+          "line": 10,
+          "desc": "Ｅs，钢筋的初始弹性模量"
+        },
+        {
+          "attr": "υs",
+          "line": 10,
+          "desc": "υs，钢筋的泊松比"
+        }
+      ],
+      [
+        {
+          "attr": "ｄ",
+          "line": 10,
+          "desc": "ｄ，钢筋的直径"
+        },
+        {
+          "attr": "Ｎ",
+          "line": 10,
+          "desc": "Ｎ，钢筋的根数"
+        },
+        {
+          "attr": "ｄc",
+          "line": 10,
+          "desc": "ｄc，混凝土保护层厚度"
+        },
+        {
+          "attr": "Ｙs",
+          "line": 10,
+          "desc": "Ｙs，钢筋的屈服强度"
+        },
+        {
+          "attr": "νs",
+          "line": 10,
+          "desc": "νs，钢筋模型parameter"
+        },
+        {
+          "attr": "βs",
+          "line": 10,
+          "desc": "βs，钢筋的Degrading parameter"
+        }
+      ],
+      [
+        {
+          "attr": "ｈ1",
+          "line": 10,
+          "desc": "ｈ1，衰减系数"
+        },
+        {
+          "attr": "ｈ2",
+          "line": 10,
+          "desc": "ｈ2，衰减系数"
+        },
+        {
+          "attr": "ρ",
+          "line": 10,
+          "desc": "ρ，密度"
+        },
+        {
+          "attr": "H",
+          "line": 10,
+          "desc": "矩形截面的高H（圆形截面则为0）"
+        },
+        {
+          "attr": "N",
+          "line": 10,
+          "desc": "N,1个梁单元所含桩的根数(=0：1根)"
+        },
+        {
+          "attr": "Ｄin",
+          "line": 10,
+          "desc": "Ｄin，桩的内径(=0：实心桩)"
+        },
+        {
+          "attr": "IUUU",
+          "line": 10,
+          "desc": "矩形截面的钢筋坐标的输入方法"
+        }
+      ]
+    ]
+    var mn = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的材料时填“E”"
+        },
+        {
+          "attr": "MT",
+          "line": 4,
+          "desc": "平面板单元=18；厚板单元=19"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "Ｅ",
+          "line": 10,
+          "desc": "Ｅ，弹性模量"
+        },
+        {
+          "attr": "υ",
+          "line": 10,
+          "desc": "υ，泊松比"
+        },
+        {
+          "attr": "ｔ",
+          "line": 10,
+          "desc": "ｔ，板厚"
+        },
+        {
+          "attr": "ρ",
+          "line": 10,
+          "desc": "ρ，密度"
+        },
+        {
+          "attr": "ｈ1",
+          "line": 10,
+          "desc": "ｈ1，衰减系数"
+        },
+        {
+          "attr": "ｈ2",
+          "line": 10,
+          "desc": "ｈ2，衰减系数"
         }
       ]
     ]
