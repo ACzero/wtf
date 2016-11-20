@@ -241,6 +241,54 @@
           </table>
         </div>
       </div>
+      <div id="bnode">
+        <h4>4节点平板单元（8节点厚板单元）<h4/>
+        <div id="bnode3">
+          <h4>三维单元<h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
+      </div>
+      <div id="cnode">
+        <h4>节理单元<h4/>
+        <div id="cnode2">
+          <h4>二维（4节点）<h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
+        <div id="cnode3">
+          <h4>三维（8节点）<h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
+      </div>
+      <div id="dnode">
+        <h4>梁（柱，桩）单元<h4/>
+        <div id="dnode2">
+          <h4>二维<h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
+        <div id="dnode3">
+          <h4>三维<h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
+      </div>
+      <div id="enode">
+        <h4>梁（柱，桩）单元<h4/>
+        <div id="enode3">
+          <h4><h4/><button type="button" class="btn btn-default add">添加</button>
+          <table class="table">
+            <tr></tr>
+          </table>
+        </div>
+      </div>
     </div>
     <div>
       <button type="button" class="btn btn-default" id="generate">生成</button>
@@ -270,14 +318,29 @@
       // gen node
       var node_data = [];
       for(var _c=2;_c < 4;_c++){
-        var tbid = "anode" + _c;
-        var format_name = "anode" + _c;
         node_data.push({
-          "tbid": tbid,
-          "format_name": format_name
+          "tbid": ("anode" + _c),
+          "format_name": ("anode" + _c)
+        });
+        node_data.push({
+          "tbid": ("cnode" + _c),
+          "format_name": ("cnode" + _c)
+        });
+        node_data.push({
+          "tbid": ("dnode" + _c),
+          "format_name": ("dnode" + _c)
         });
       }
-      console.log(node_data)
+      for(var _c=3;_c < 4;_c++){
+        node_data.push({
+          "tbid": ("bnode" + _c),
+          "format_name": ("bnode" + _c)
+        });
+        node_data.push({
+          "tbid": ("enode" + _c),
+          "format_name": ("enode" + _c)
+        });
+      }
       gen_table_attrs(node_data);
     }
 
@@ -368,6 +431,24 @@
         tmp_datas.push({
           "tbid": "#anode" + _c,
           "format_name": "anode" + _c
+        });
+        tmp_datas.push({
+          "tbid": "#cnode" + _c,
+          "format_name": "cnode" + _c
+        });
+        tmp_datas.push({
+          "tbid": "#dnode" + _c,
+          "format_name": "dnode" + _c
+        });
+      }
+      for(var _c=3;_c < 4;_c++){
+        tmp_datas.push({
+          "tbid": "#bnode" + _c,
+          "format_name": "bnode" + _c
+        });
+        tmp_datas.push({
+          "tbid": "#enode" + _c,
+          "format_name": "enode" + _c
         });
       }
       return get_table_gen(tmp_datas);
@@ -2041,6 +2122,315 @@
           "attr": "NLIQ",
           "line": 5,
           "desc": "单元的干湿（有效应力分析时）1：干，0：湿"
+        }
+      ]
+    ]
+    var bnode3 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "N3",
+          "line": 5,
+          "desc": "单元的第3个节点号码"
+        },
+        {
+          "attr": "N4",
+          "line": 5,
+          "desc": "单元的第4个节点号码"
+        },
+        {
+          "attr": "N5",
+          "line": 5,
+          "desc": "单元的第5个节点号码（4节点平板单元=0）"
+        },
+        {
+          "attr": "N6",
+          "line": 5,
+          "desc": "单元的第6个节点号码（4节点平板单元=0）"
+        },
+        {
+          "attr": "N7",
+          "line": 5,
+          "desc": "单元的第7个节点号码（4节点平板单元=0）"
+        },
+        {
+          "attr": "N8",
+          "line": 5,
+          "desc": "单元的第8个节点号码（4节点平板单元=0）"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        }
+      ]
+    ]
+    var cnode2 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "N3",
+          "line": 5,
+          "desc": "单元的第3个节点号码"
+        },
+        {
+          "attr": "N4",
+          "line": 5,
+          "desc": "单元的第4个节点号码"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        }
+      ]
+    ]
+    var cnode3 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "N3",
+          "line": 5,
+          "desc": "单元的第3个节点号码"
+        },
+        {
+          "attr": "N4",
+          "line": 5,
+          "desc": "单元的第4个节点号码"
+        },
+        {
+          "attr": "N5",
+          "line": 5,
+          "desc": "单元的第5个节点号码"
+        },
+        {
+          "attr": "N6",
+          "line": 5,
+          "desc": "单元的第6个节点号码"
+        },
+        {
+          "attr": "N7",
+          "line": 5,
+          "desc": "单元的第7个节点号码"
+        },
+        {
+          "attr": "N8",
+          "line": 5,
+          "desc": "单元的第8个节点号码"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        }
+      ]
+    ]
+    var dnode2 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "INBC1",
+          "line": 5,
+          "desc": "相关1st Column单元的单元编号"
+        },
+        {
+          "attr": "INBC2",
+          "line": 5,
+          "desc": "相关2nd Column单元的单元编号"
+        },
+        {
+          "attr": "NHALF",
+          "line": 5,
+          "desc": "：是否进行半断面计算的指标 1：半断面，0：全断面"
+        }
+      ]
+    ]
+    var dnode3 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "XYK1",
+          "line": 5,
+          "desc": "Ｋ点的X坐标"
+        },
+        {
+          "attr": "XYK2",
+          "line": 5,
+          "desc": "Ｋ点的Y坐标"
+        },
+        {
+          "attr": "XYK3",
+          "line": 5,
+          "desc": "Ｋ点的Z坐标"
+        },
+        {
+          "attr": "INBC1",
+          "line": 5,
+          "desc": "相关1st Column单元的单元编号"
+        },
+        {
+          "attr": "INBC2",
+          "line": 5,
+          "desc": "相关2nd Column单元的单元编号"
+        },
+        {
+          "attr": "INBC3",
+          "line": 5,
+          "desc": "相关3rd Column单元的单元编号"
+        },
+        {
+          "attr": "INBC4",
+          "line": 5,
+          "desc": "相关4th Column单元的单元编号"
+        },
+        {
+          "attr": "NHALF",
+          "line": 5,
+          "desc": "：是否进行半断面计算的指标 1：半断面，0：全断面"
+        }
+      ]
+    ]
+    var enode3 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "M1",
+          "line": 9,
+          "desc": "单元编号"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "单元的第1个节点号码"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "单元的第2个节点号码"
+        },
+        {
+          "attr": "MM",
+          "line": 5,
+          "desc": "材料编号"
+        },
+        {
+          "attr": "INBC1",
+          "line": 5,
+          "desc": "单元的第1个节点的自由度方向"
+        },
+        {
+          "attr": "INBC2",
+          "line": 5,
+          "desc": "单元的第2个节点的自由度方向"
         }
       ]
     ]
