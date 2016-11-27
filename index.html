@@ -225,6 +225,20 @@
       </div>
     </div>
     <div id="node-data">
+      <h2>单元数据</h2>
+      <div id="node2">
+        <h4>二维单元<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+      <div id="node3">
+        <h4>三维单元<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+    <div id="node-data">
       <h2>节点数据</h2>
       <div id="anode">
         <h4>实体单元<h4/>
@@ -403,6 +417,10 @@
       var node_data = [];
       for(var _c=2;_c < 4;_c++){
         node_data.push({
+          "tbid": ("node" + _c),
+          "format_name": ("node" + _c)
+        });
+        node_data.push({
           "tbid": ("anode" + _c),
           "format_name": ("anode" + _c)
         });
@@ -559,6 +577,10 @@
     function get_node(){
       var tmp_datas = [];
       for(var _c=2;_c < 4;_c++){
+        tmp_datas.push({
+          "tbid": "#node" + _c,
+          "format_name": "node" + _c
+        });
         tmp_datas.push({
           "tbid": "#anode" + _c,
           "format_name": "anode" + _c
@@ -2168,6 +2190,94 @@
           "attr": "ｈ2",
           "line": 10,
           "desc": "ｈ2，衰减系数"
+        }
+      ]
+    ]
+    var node2 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的节点时填“E”"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "节点编号"
+        },
+        {
+          "attr": "X1",
+          "line": 10,
+          "desc": "节点的X坐标"
+        },
+        {
+          "attr": "Y1",
+          "line": 10,
+          "desc": "节点的Y坐标"
+        },
+        {
+          "attr": "N2",
+          "line": 10,
+          "desc": "节点的位移边界条件"
+        },
+        {
+          "attr": "PMASS",
+          "line": 10,
+          "desc": "节点的集中质量"
+        }
+      ]
+    ]
+    var node3 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的节点时填“E”"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "节点编号"
+        },
+        {
+          "attr": "X1",
+          "line": 10,
+          "desc": "节点的X坐标"
+        },
+        {
+          "attr": "Y1",
+          "line": 10,
+          "desc": "节点的Y坐标"
+        },
+        {
+          "attr": "Z1",
+          "line": 10,
+          "desc": "节点的Z坐标"
+        },
+        {
+          "attr": "N2",
+          "line": 10,
+          "desc": "节点的位移边界条件"
+        },
+        {
+          "attr": "PMASS",
+          "line": 10,
+          "desc": "节点的集中质量"
+        },
+        {
+          "attr": "X2",
+          "line": 10,
+          "desc": "厚板单元的第2节点的X坐标"
+        },
+        {
+          "attr": "Y2",
+          "line": 10,
+          "desc": "厚板单元的第2节点的Y坐标"
+        },
+        {
+          "attr": "Z2",
+          "line": 10,
+          "desc": "厚板单元的第2节点的Z坐标"
         }
       ]
     ]
