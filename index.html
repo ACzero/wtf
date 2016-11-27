@@ -290,6 +290,54 @@
         </div>
       </div>
     </div>
+    <div id="data5">
+      <h2>等位移边界条件（当IEDIS=1的时候）</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data6">
+      <h2>渗流边界条件(MTYPE=1的时候)</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data7">
+      <h2>履历输出地层单元编号</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data8">
+      <h2>履历输出节点编号</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data9">
+      <h2>履历输出节理单元</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data10">
+      <h2>履历输出梁单元</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data11">
+      <h2>履历输入弹簧单元</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data12">
+      <h2>计算步输出</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
     <div>
       <button type="button" class="btn btn-default" id="generate">生成</button>
     </div>
@@ -342,6 +390,17 @@
         });
       }
       gen_table_attrs(node_data);
+
+      //gen other data
+      var other_data = []
+      for(var i=5; i < 13; i++){
+        var name = "data" + i;
+        other_data.push({
+          "tbid": name,
+          "format_name": name
+        })
+      }
+      gen_table_attrs(other_data);
     }
 
     function gen_table_attrs(table_datas){
@@ -366,6 +425,7 @@
       result += gen_ctr() + "\n";
       result += get_material() + "\n";
       result += get_node();
+      result += get_other();
       $("#result")[0].value = result;
     });
 
@@ -419,6 +479,24 @@
       return text;
     }
 
+    function gen_other(name){
+      var tmp_data = eval(name);
+      html = "";
+      for(var i in tmp_data){
+        for(var j in tmp_data[i]){
+          var input_html = "<div class=\"input-group\">";
+          input_html += "<span class=\"input-group-addon\" id=\"basic-addon3\">" + tmp_data[i][j].attr + "</span>";
+          input_html += "<input type=\"text\" class=\"form-control\"/>";
+          input_html += "</div>";
+          input_html += "<span>" + tmp_data[i][j].desc + "</span>";
+          html += input_html;
+        }
+      }
+
+      console.log(html);
+      $("#" + name).append(html);
+    }
+
     function get_material(){
       var count = 17;
       var tmp_datas = [];
@@ -457,6 +535,18 @@
           "format_name": "enode" + _c
         });
       }
+      return get_table_gen(tmp_datas);
+    }
+
+    function get_other(){
+      var tmp_datas = [];
+      for (var i = 5; i < 13; i++){
+        tmp_datas.push({
+          "tbid": ("#data" + i),
+          "format_name": ("data" + i)
+        })
+      }
+      console.log(tmp_datas);
       return get_table_gen(tmp_datas);
     }
 
@@ -2437,6 +2527,197 @@
           "attr": "INBC2",
           "line": 5,
           "desc": "单元的第2个节点的自由度方向"
+        }
+      ]
+    ]
+    var data5 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的边界条件时填“E”"
+        },
+        {
+          "attr": "MP1",
+          "line": 9,
+          "desc": "等位移的两节点中的第1个节点"
+        },
+        {
+          "attr": "MP2",
+          "line": 5,
+          "desc": "等位移的两节点中的第2个节点"
+        },
+        {
+          "attr": "MDII",
+          "line": 5,
+          "desc": "等位移的自由度方向"
+        }
+      ]
+    ]
+    var data6 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的边界条件时填“E”"
+        },
+        {
+          "attr": "MB",
+          "line": 9,
+          "desc": "开始的单元编号"
+        },
+        {
+          "attr": "ML",
+          "line": 5,
+          "desc": "结束的单元编号（=0则不进行连续处理）"
+        },
+        {
+          "attr": "IC",
+          "line": 5,
+          "desc": "渗透排水的边界编号"
+        }
+      ]
+    ]
+    var data7 = [
+      [
+        {
+          "attr": "L",
+          "line": 5,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "MB",
+          "line": 5,
+          "desc": "开始的单元编号"
+        },
+        {
+          "attr": "ML",
+          "line": 5,
+          "desc": "结束的单元编号（=0则不进行连续处理）"
+        }
+      ]
+    ]
+    var data8 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "NB",
+          "line": 9,
+          "desc": "开始的节点编号"
+        },
+        {
+          "attr": "NL",
+          "line": 5,
+          "desc": "结束的单元编号（=0则不进行连续处理）"
+        }
+      ]
+    ]
+    var data9 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "MB",
+          "line": 9,
+          "desc": "开始的节点编号"
+        },
+        {
+          "attr": "ML",
+          "line": 5,
+          "desc": "结束的单元编号（=0则不进行连续处理）"
+        }
+      ]
+    ]
+    var data10 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "MB",
+          "line": 9,
+          "desc": "开始的节点编号"
+        },
+        {
+          "attr": "ML",
+          "line": 5,
+          "desc": "结束的单元编号（=0则不进行连续处理）"
+        }
+      ]
+    ]
+    var data11 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "MB",
+          "line": 9,
+          "desc": "开始的节点编号"
+        },
+        {
+          "attr": "ML",
+          "line": 5,
+          "desc": "结束的单元编号（=0则不进行连续处理）"
+        }
+      ]
+    ]
+    var data12 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的单元时填“E”"
+        },
+        {
+          "attr": "NSTG",
+          "line": 4,
+          "desc": "工况步（=0：工况步1）"
+        },
+        {
+          "attr": "NB",
+          "line": 10,
+          "desc": "各工况步中开始的计算步"
+        },
+        {
+          "attr": "NL",
+          "line": 10,
+          "desc": "各工况步中结束的计算步（=0则不进行连续处理）"
+        },
+        {
+          "attr": "AVS",
+          "line": 10,
+          "desc": "MircoAVS中网格的变形倍率。网格变形=实际变形×变形倍率（=0表示变形倍率为1）。"
+        },
+      ]
+    ]
+    var aaaa = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "Dummy"
+        },
+        {
+          "attr": "NSTAGE",
+          "line": 9,
+          "desc": "总计算工况步数"
+        },
+        {
+          "attr": "IANA(I)",
+          "line": 50,
+          "desc": "：各计算工况步的计算类型(０：静力解析 １：固有特征值解析 ２：固有特征值解析+动力解析 ３：动力解析"
         }
       ]
     ]
