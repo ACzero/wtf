@@ -338,6 +338,42 @@
         <tr></tr>
       </table>
     </div>
+    <div id="data13">
+      <h2>计算步输出</h2><button type="button" class="btn btn-default add">添加</button>
+      <table class="table">
+        <tr></tr>
+      </table>
+    </div>
+    <div id="data-15">
+      <h2>输入动力荷载及阻尼系数(当IANA≧2，动力计算)</h2>
+      <div id="data152">
+        <h4>二维<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+      <div id="data153">
+        <h4>三维<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+    </div>
+    <div id="data-16">
+      <h2>荷载条件的设置(IANA≦0，静力解析)</h2>
+      <div id="data162">
+        <h4>二维<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+      <div id="data163">
+        <h4>三维<h4/><button type="button" class="btn btn-default add">添加</button>
+        <table class="table">
+          <tr></tr>
+        </table>
+      </div>
+    </div>
     <div>
       <button type="button" class="btn btn-default" id="generate">生成</button>
     </div>
@@ -400,6 +436,17 @@
           "format_name": name
         })
       }
+      for(var i=15; i < 17; i ++){
+        other_data.push({
+          "tbid": ("data" + i + "2"),
+          "format_name": ("data" + i + "2")
+        });
+        other_data.push({
+          "tbid": ("data" + i + "3"),
+          "format_name": ("data" + i + "3")
+        });
+      }
+
       gen_table_attrs(other_data);
     }
 
@@ -546,7 +593,18 @@
           "format_name": ("data" + i)
         })
       }
-      console.log(tmp_datas);
+
+      for(var i=15; i < 17; i ++){
+        tmp_datas.push({
+          "tbid": ("#data" + i + "2"),
+          "format_name": ("data" + i + "2")
+        });
+        tmp_datas.push({
+          "tbid": ("#data" + i + "3"),
+          "format_name": ("data" + i + "3")
+        });
+      }
+
       return get_table_gen(tmp_datas);
     }
 
@@ -2702,22 +2760,334 @@
         },
       ]
     ]
-    var aaaa = [
+    var data152 = [
+      [
+        {
+          "attr": "HTOTAL1",
+          "line": 10,
+          "desc": "解析对象整体的衰减系数h1"
+        },
+        {
+          "attr": "HTOTAL2",
+          "line": 10,
+          "desc": "解析对象整体的衰减系数h2"
+        },
+        {
+          "attr": "DELT",
+          "line": 10,
+          "desc": "输入地震动数据的数据项之间的时间间隔"
+        },
+        {
+          "attr": "OMEGAR1",
+          "line": 10,
+          "desc": "解析对象整体的圆固有振动频率的平方数ω1^2"
+        },
+        {
+          "attr": "OMEGAR2",
+          "line": 10,
+          "desc": "解析对象整体的圆固有振动频率的平方数ω2^2"
+        },
+        {
+          "attr": "HBETA",
+          "line": 10,
+          "desc": "时间领域积分法Newmarkβ法的β值"
+        },
+        {
+          "attr": "HGAMA",
+          "line": 10,
+          "desc": "时间领域积分法Newmarkβ法的γ值"
+        }
+      ],
+      [
+        {
+          "attr": "NSTEP",
+          "line": 10,
+          "desc": "输入动力数据文件的数据数量（地震和振动力）"
+        },
+        {
+          "attr": "JTYPE",
+          "line": 5,
+          "desc": "输入地震动的加速度单位 1：m/sec2；0：cm/sec2(=gal) 注：仅在NWP=0（地震动）的情况下有效"
+        },
+        {
+          "attr": "NWX",
+          "line": 5,
+          "desc": "是否有X方向的地震动 1：有；0：无"
+        },
+        {
+          "attr": "NWY",
+          "line": 5,
+          "desc": "是否有Y方向的地震动 1：有；0：无"
+        },
+        {
+          "attr": "NDIVID",
+          "line": 5,
+          "desc": "对输入地震动的数据进行的内插时的等分数"
+        },
+        {
+          "attr": "KCTYPE",
+          "line": 5,
+          "desc": "衰减类型的选择。0：Rayleign damping，1:质量比例，2:初始刚度比例（建议用2）"
+        },
+        {
+          "attr": "KHTYPE",
+          "line": 5,
+          "desc": "衰减方法。1：全部材料使用同一衰减系数（第一行所定义的系数），0：各材料使用各自的衰减系数（各材料参数里定义的系数）"
+        },
+        {
+          "attr": "NWP",
+          "line": 5,
+          "desc": "震动的加振形式。0：在固定边界上加地震动（加速度！）0：在固定边界上加地震动（加速度！）正整数：在节点上加振动力（力！），NWP的绝对值为加振节点的数量。负整数：在单元边界上加振动的面荷载（压力！），NWP的绝对值为加振单元边界的数量。（注）在节点/单元边界上加的振动力由外部数据文件（IFNAMEP）给出。"
+        }
+      ],
+      [
+        {
+          "attr": "IFNAMEX",
+          "line": 20,
+          "desc": "（NWP=0时）X方向的地震动的数据文件名 （NWP=1时）点振动荷载的数据文件名"
+        },
+        {
+          "attr": "IFNAMEY",
+          "line": 20,
+          "desc": "Y方向的地震动的数据文件名"
+        },
+        {
+          "attr": "IFNAMEP",
+          "line": 20,
+          "desc": "节点/单元边界上振动外力的数据文件名"
+        }
+      ]
+    ]
+    var data153 = [
+      [
+        {
+          "attr": "HTOTAL1",
+          "line": 10,
+          "desc": "解析对象整体的衰减系数h1"
+        },
+        {
+          "attr": "HTOTAL2",
+          "line": 10,
+          "desc": "解析对象整体的衰减系数h2"
+        },
+        {
+          "attr": "DELT",
+          "line": 10,
+          "desc": "输入地震动数据的数据项之间的时间间隔"
+        },
+        {
+          "attr": "OMEGAR1",
+          "line": 10,
+          "desc": "解析对象整体的圆固有振动频率的平方数ω1^2"
+        },
+        {
+          "attr": "OMEGAR2",
+          "line": 10,
+          "desc": "解析对象整体的圆固有振动频率的平方数ω2^2"
+        },
+        {
+          "attr": "HBETA",
+          "line": 10,
+          "desc": "时间领域积分法Newmarkβ法的β值"
+        },
+        {
+          "attr": "HGAMA",
+          "line": 10,
+          "desc": "时间领域积分法Newmarkβ法的γ值"
+        }
+      ],
+      [
+        {
+          "attr": "NSTEP",
+          "line": 10,
+          "desc": "输入动力数据文件的数据数量（地震和振动力）"
+        },
+        {
+          "attr": "JTYPE",
+          "line": 5,
+          "desc": "输入地震动的加速度单位 1：m/sec2；0：cm/sec2(=gal)"
+        },
+        {
+          "attr": "NWX",
+          "line": 5,
+          "desc": "是否有X方向的地震动 1：有；0：无"
+        },
+        {
+          "attr": "NWY",
+          "line": 5,
+          "desc": "是否有Y方向的地震动 1：有；0：无"
+        },
+        {
+          "attr": "NWZ",
+          "line": 5,
+          "desc": "是否有Z方向的地震动 1：有；0：无"
+        },
+        {
+          "attr": "NDIVID",
+          "line": 5,
+          "desc": "对输入地震动的数据进行的内插时的等分数"
+        },
+        {
+          "attr": "KCTYPE",
+          "line": 5,
+          "desc": "衰减类型的选择。0：Rayleign damping，1:质量比例，2:初始刚度比例（建议用2）"
+        },
+        {
+          "attr": "KHTYPE",
+          "line": 5,
+          "desc": "衰减方法。1：全部材料使用同一衰减系数（第一行所定义的系数），0：各材料使用各自的衰减系数（各材料参数里定义的系数）"
+        },
+        {
+          "attr": "NWP",
+          "line": 5,
+          "desc": "震动的加振形式。0：在固定边界上加地震动（加速度！）0：在固定边界上加地震动（加速度！）正整数：在节点上加振动力（力！），NWP的绝对值为加振节点的数量。负整数：在单元边界上加振动的面荷载（压力！），NWP的绝对值为加振单元边界的数量。（注）在节点/单元边界上加的振动力由外部数据文件（IFNAMEP）给出。"
+        }
+      ],
+      [
+        {
+          "attr": "IFNAMEX",
+          "line": 20,
+          "desc": "（NWP=0时）X方向的地震动的数据文件名 （NWP=1时）点振动荷载的数据文件名"
+        },
+        {
+          "attr": "IFNAMEY",
+          "line": 20,
+          "desc": "Y方向的地震动的数据文件名"
+        },
+        {
+          "attr": "IFNAMEZ",
+          "line": 20,
+          "desc": "Z方向的地震动的数据文件名"
+        },
+        {
+          "attr": "IFNAMEP",
+          "line": 20,
+          "desc": "节点/单元边界上振动外力的数据文件名"
+        }
+      ]
+    ]
+    var data162 = [
       [
         {
           "attr": "L",
           "line": 1,
-          "desc": "Dummy"
+          "desc": "空白"
         },
         {
-          "attr": "NSTAGE",
+          "attr": "NSTEP",
           "line": 9,
-          "desc": "总计算工况步数"
+          "desc": "增量计算的计算步数"
         },
         {
-          "attr": "IANA(I)",
-          "line": 50,
-          "desc": "：各计算工况步的计算类型(０：静力解析 １：固有特征值解析 ２：固有特征值解析+动力解析 ３：动力解析"
+          "attr": "IWRITE (1)",
+          "line": 5,
+          "desc": "是否输出节点位移数据。0：不输出，1：输出"
+        },
+        {
+          "attr": "IWRITE (2)",
+          "line": 5,
+          "desc": "是否输出地层单元的应力数据。0：不输出，1：输出"
+        },
+        {
+          "attr": "IWRITE (3)",
+          "line": 5,
+          "desc": "是否输出梁单元的面力数据。0：不输出，1：输出"
+        },
+        {
+          "attr": "DTIME",
+          "line": 10,
+          "desc": "增量计算的单步时间（Time Interval）（注）有效应力计算时用于计算水的渗流变化"
+        }
+      ],
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的荷载时填“E”"
+        },
+        {
+          "attr": "LTYPE",
+          "line": 4,
+          "desc": "荷载种类 0：节点荷载 1：单元荷载 4：重力场荷载计算（初期自重应力场计算）5：进行固结计算"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "LTYPE=0（节点荷载）时，受荷载的节点号码。（注）节点荷载包含位移荷载及力荷载。LTYPE=1（单元荷载）时，受荷载的单元号码。LTYPE=5（进行固结计算）时，若N1<0则将等位移边界条件改为固定位移边界条件。改变的自由度如下：N1= -1 : X　-2: Y　-3: Z　-12: XY　-23:YZ　-31:ZX　-123: XYZ"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "仅当LTYPE=0（节点荷载）时有效。荷载种类：0：力荷载；1：位移荷载；10：将由位移荷载引起的等效节点荷载输出到displace.txt中。"
+        },
+        {
+          "attr": "DFX",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，X方向的荷载（位移）值 LTYPE=1（单元荷载）时，X方向的单位体积荷载"
+        },
+        {
+          "attr": "DFY",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，Y方向的荷载（位移）值 LTYPE=1（单元荷载）时，Y方向的单位体积荷载"
+        },
+        {
+          "attr": "TFX",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，θx方向的弯矩（角度）值"
+        }
+      ]
+    ]
+    var data163 = [
+      [
+        {
+          "attr": "L",
+          "line": 1,
+          "desc": "最后的荷载时填“E”"
+        },
+        {
+          "attr": "LTYPE",
+          "line": 4,
+          "desc": "荷载种类 0：节点荷载 1：单元荷载 4：重力场荷载计算（初期自重应力场计算）5：进行固结计算"
+        },
+        {
+          "attr": "N1",
+          "line": 5,
+          "desc": "LTYPE=0（节点荷载）时，受荷载的节点号码。（注）节点荷载包含位移荷载及力荷载。LTYPE=1（单元荷载）时，受荷载的单元号码。LTYPE=5（进行固结计算）时，若N1<0则将等位移边界条件改为固定位移边界条件。改变的自由度如下：N1= -1 : X　-2: Y　-3: Z　-12: XY　-23:YZ　-31:ZX　-123: XYZ"
+        },
+        {
+          "attr": "N2",
+          "line": 5,
+          "desc": "仅当LTYPE=0（节点荷载）时有效。荷载种类：0：力荷载；1：位移荷载；10：将由位移荷载引起的等效节点荷载输出到displace.txt中。"
+        },
+        {
+          "attr": "DFX",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，X方向的荷载（位移）值 LTYPE=1（单元荷载）时，X方向的单位体积荷载"
+        },
+        {
+          "attr": "DFY",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，Y方向的荷载（位移）值 LTYPE=1（单元荷载）时，Y方向的单位体积荷载"
+        },
+        {
+          "attr": "DFZ",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，Z方向的荷载（位移）值 LTYPE=1（单元荷载）时，Z方向的单位体积荷载"
+        },
+        {
+          "attr": "TFX",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，θx方向的弯矩（角度）值"
+        },
+        {
+          "attr": "TFY",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，θy方向的弯矩（角度）值"
+        },
+        {
+          "attr": "TFZ",
+          "line": 10,
+          "desc": "LTYPE=0（节点荷载）时，θz方向的弯矩（角度）值"
         }
       ]
     ]
