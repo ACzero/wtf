@@ -352,7 +352,8 @@
         for(var n in all_attr){
           for(var m in all_attr[n]){
             var _attr = all_attr[n][m].attr;
-            insert_tr += "<th>" + _attr + "</th>\n"
+            var _desc = all_attr[n][m].desc;
+            insert_tr += "<th title=\"" + _desc + "\">" + _attr + "</th>\n"
           }
         }
         target_table.append(insert_tr);
@@ -375,8 +376,13 @@
       for(var i = 0;i < attr_count;i++){
         html += "<td><input type=\"text\" class=\"form-control\"/></td>\n";
       }
+      html += "<td><button type=\"button\" class=\"del-btn\">删除</button></td>"
       html += "</tr>\n";
       target.append(html);
+
+      $(".del-btn").click(function() {
+        $(this).parent().parent().remove();
+      })
     });
 
     function gen_title(){
